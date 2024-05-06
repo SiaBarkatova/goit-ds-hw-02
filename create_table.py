@@ -25,7 +25,6 @@ if __name__ == '__main__':
     );
     """
 
-
     sql_create_status_table = """
     CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,11 +48,16 @@ if __name__ == '__main__':
 
     with create_connection(database) as conn:
         if conn is not None:
-						# create users table
+            # create users table
             create_table(conn, sql_create_users_table)
-                        # create status table
+            print("Users table created successfully.")
+ 
+            # create status table
             create_table(conn, sql_create_status_table)
-						# create tasks table
+            print("Status table created successfully.")
+ 
+            # create tasks table
             create_table(conn, sql_create_tasks_table)
+            print("Tasks table created successfully.")
         else:
             print("Error! cannot create the database connection.")
