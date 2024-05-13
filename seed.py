@@ -79,8 +79,11 @@ if __name__ == '__main__':
                 if random.randint(0,2) > 0: # skip 2/3 of potential created tasks
                     continue
 
-                task = (fake.sentence(nb_words=4), fake.paragraph(nb_sentences=3), status_id, user_id)
+                description = fake.paragraph(nb_sentences=3) if random.randint(0,2) > 0 else "" # add description to 2/3 of tasks
+
+                task = (fake.sentence(nb_words=4), description, status_id, user_id)
                 create_task(conn, task)
                 num_tasks += 1
 
         print(f"{num_users} users and {num_tasks} taks added successfully.")
+    
